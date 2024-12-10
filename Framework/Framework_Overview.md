@@ -12,7 +12,18 @@
 ## Level Structure
 
 ### Level 1: Novice (Basic Awareness)
-**Maximum Score: 25 points (5 questions × 5 points)**
+**Topics Assessment Structure**
+
+#### 1. Physical Accessibility Topic
+*Maximum Score: 20 points (5 questions × 4 points)*
+Questions:
+1. Is the entrance accessible to people with reduced mobility? (0-4)
+2. Are pathways clear and wide enough for wheelchair access? (0-4)
+3. Are bathroom facilities accessible and clearly marked? (0-4)
+4. Are emergency exits accessible and well-marked? (0-4)
+5. Is there adequate lighting throughout the space? (0-4)
+
+[Additional topics and questions to be developed...]
 - Focus: Essential accessibility and basic inclusion
 - Validation: Photo evidence of physical space elements
 - Achievement Gate: 20 points minimum to unlock Intermediate
@@ -66,13 +77,26 @@
 
 ## Scoring Guidelines
 
-### 5-Point Scale Definition
+### Scoring Scale (0-4 points)
 0: Not implemented
-1: Basic awareness
-2: Partial implementation
+  - Example: No consideration given to this aspect
+  - [More examples to be developed...]
+
+0.5: Basic awareness
+  - Example: Recognition of the need, initial discussions started
+  - [More examples to be developed...]
+
+1: Partial implementation
+  - Example: Some measures in place but not systematic
+  - [More examples to be developed...]
+
 3: Good implementation
+  - Example: Systematic approach with regular evaluation
+  - [More examples to be developed...]
+
 4: Strong implementation
-5: Exceptional implementation
+  - Example: Comprehensive system with community involvement
+  - [More examples to be developed...]
 
 ## Validation Mechanisms
 

@@ -1,107 +1,359 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test d'Inclusion de Genre</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            padding: 20px;
-        }
-        .question {
-            margin-bottom: 20px;
-        }
-        .question h3 {
-            font-size: 18px;
-        }
-        .answer-options {
-            margin: 10px 0;
-        }
-        .answer-options input {
-            margin-right: 10px;
-        }
-        #score {
-            font-weight: bold;
-            margin-top: 20px;
-        }
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inclusion and Accessibility Assessment</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            table {
+                width: auto;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            td.question {
+                width: 300px;
+            }
+            button {
+                margin: 5px;
+                padding: 10px;
+                font-size: 14px;
+            }
+            .section-header {
+                background-color: #e0e0e0;
+                font-weight: bold;
+            }
+            .question-row:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .question-row:nth-child(odd) {
+                background-color: #e6f7ff;
+            }
         </style>
-</head>
-<body>
-    
-    <h1>Mesurez l'accueil et l'inclusion dans votre espace</h1>
-        <div id="score">
-            <p>Score Total : <span id="totalScore">0</span> / <span id="maxScore">0</span> points</p>
-        </div>
-    
-    <form id="inclusionForm">
-        <!-- Question 1 -->
-        <div class="question">
-            <h3>Au moins 30% de l'équipe est une personne s'identifiant femme ou gender queer ?</h3>
-            <div class="answer-options">
-                <label><input type="radio" name="q1" value="1" onclick="calculateScore()"> Oui</label>
-                <label><input type="radio" name="q1" value="0" onclick="calculateScore()"> Non</label>
-            </div>
-        </div>
+        <script>
+            function calculateScore() {
+                let categoryScores = {};
+                let categoryCounts = {};
 
-        <!-- Question 2 -->
-        <div class="question">
-            <h3>Vous utilisez l'écriture inclusive dans vos communications ?</h3>
-            <div class="answer-options">
-                <label><input type="radio" name="q2" value="2" onclick="calculateScore()"> Oui</label>
-                <label><input type="radio" name="q2" value="0" onclick="calculateScore()"> Non</label>
-            </div>
-        </div>
+                let inputs = document.querySelectorAll('input[type=radio]:checked');
 
-        <!-- Question 3 -->
-        <div class="question">
-            <h3>Vous faites des partenariats avec des associations de femmes ou queer ?</h3>
-            <div class="answer-options">
-                <label><input type="radio" name="q3" value="2" onclick="calculateScore()"> Oui</label>
-                <label><input type="radio" name="q3" value="0" onclick="calculateScore()"> Non</label>
-            </div>
-        </div>
+                inputs.forEach(input => {
+                    let category = input.name.split('-')[0];
+                    let questionNumber = input.name.split('-')[1];
+                    let value = parseInt(input.value);
 
-        <!-- Question 4 (scale with half-points) -->
-        <div class="question">
-            <h3>Votre équipe bénéficie-t-elle de formations régulières sur l'inclusion ?</h3>
-            <div class="answer-options">
-                <label><input type="radio" name="q4" value="0" onclick="calculateScore()"> Pas du tout</label>
-                <label><input type="radio" name="q4" value="0.5" onclick="calculateScore()"> Un peu</label>
-                <label><input type="radio" name="q4" value="1" onclick="calculateScore()"> Modérément</label>
-                <label><input type="radio" name="q4" value="1.5" onclick="calculateScore()"> Beaucoup</label>
-                <label><input type="radio" name="q4" value="2" onclick="calculateScore()"> Entièrement</label>
-            </div>
-        </div>
+                    if (!categoryScores[category]) {
+                        categoryScores[category] = { sum: 0 };
+                        categoryCounts[category] = { count: 0 };
+                    }
 
-        <!-- Other questions follow in a similar pattern -->
-    </form>
+                    categoryScores[category].sum += value;
+                    categoryCounts[category].count += 1;
+                });
 
-    <script>
-        function calculateScore() {
-            let total = 0;
-            let maxScore = 0;
-            const formElements = document.forms["inclusionForm"].elements;
+                let results = '';
+                let totalScore = 0;
+                let categoryNames = Object.keys(categoryScores);
 
-            // Loop through all form elements and calculate total score
-            for (let i = 0; i < formElements.length; i++) {
-                if (formElements[i].type === "radio" && formElements[i].checked) {
-                    total += parseFloat(formElements[i].value);
-                }
-                if (formElements[i].type === "radio") {
-                    maxScore += Math.max(...Array.from(formElements[i].parentNode.children).map(option => parseFloat(option.value)));
-                }
+                categoryNames.forEach(category => {
+                    let sum = categoryScores[category].sum;
+                    let n = categoryCounts[category].count;
+
+                    let rawScore = sum;
+                    let maxPossibleScore = 5 * n;
+
+                    let normalizedScore = (rawScore / maxPossibleScore) * 100;
+
+                    totalScore += normalizedScore;
+                    results += `${category} Category Score: ${normalizedScore.toFixed(2)} / 100<br>`;
+                });
+
+                let aggregateScore = totalScore / categoryNames.length;
+                results += `<br>Aggregate Score: ${aggregateScore.toFixed(2)} / 100`;
+
+                document.getElementById('results').innerHTML = results;
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth",
+                });
             }
 
-            // Display the total score
-            document.getElementById("totalScore").textContent = total.toFixed(1);
-            document.getElementById("maxScore").textContent = maxScore.toFixed(1);
-        }
+            function debugSetAll(value) {
+                let inputs = document.querySelectorAll('input[type=radio]');
 
-        // Trigger the initial calculation when the page loads
-        window.addEventListener('load', calculateScore);
-    </script>
-
-</body>
-</html>
+                inputs.forEach(input => {
+                    if (parseInt(input.value) === value) {
+                        input.checked = true;
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Inclusion and Accessibility Assessment</h2>
+        <p>When marking this assessment, please use the following guidelines:</p>
+        <ul>
+            <li>1 - No accessibility considerations</li>
+            <li>2 - Awareness of needs, planning stage</li>
+            <li>3 - Some accommodations (like a temporary ramp)</li>
+            <li>4 - Permanent ramp, wide doors</li>
+            <li>5 - Automatic doors, multiple access options</li>
+        </ul>
+        <form>
+            <table>
+                <tr>
+                    <th>Question</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                </tr>
+    <tr class='section-header'><td colspan='6'>Physical Accessibility - Question 1</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How accessible is your main entrance?</td>
+                        <td><input type="radio" name="Physical Accessibility-1" value="1" data-type="1">No accessibility considerations</td>
+                        <td><input type="radio" name="Physical Accessibility-1" value="2" data-type="2">Awareness of needs, planning stage</td>
+                        <td><input type="radio" name="Physical Accessibility-1" value="3" data-type="3">Some accommodations (like a temporary ramp)</td>
+                        <td><input type="radio" name="Physical Accessibility-1" value="4" data-type="4">Permanent ramp, wide doors</td>
+                        <td><input type="radio" name="Physical Accessibility-1" value="5" data-type="5">Automatic doors, multiple access options</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Physical Accessibility - Question 2</td></tr>
+                    <tr class="question-row">
+                        <td class="question">Are your internal pathways navigable for all users?</td>
+                        <td><input type="radio" name="Physical Accessibility-2" value="1" data-type="1">Cluttered or narrow pathways</td>
+                        <td><input type="radio" name="Physical Accessibility-2" value="2" data-type="2">Some clear paths but not consistent</td>
+                        <td><input type="radio" name="Physical Accessibility-2" value="3" data-type="3">Main paths clear and wide enough</td>
+                        <td><input type="radio" name="Physical Accessibility-2" value="4" data-type="4">All paths clear, marked, and wide</td>
+                        <td><input type="radio" name="Physical Accessibility-2" value="5" data-type="5">Thoughtfully designed circulation with rest areas</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Physical Accessibility - Question 3</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How accessible are your bathroom facilities?</td>
+                        <td><input type="radio" name="Physical Accessibility-3" value="1" data-type="1">Standard facilities only</td>
+                        <td><input type="radio" name="Physical Accessibility-3" value="2" data-type="2">Planning for accessibility</td>
+                        <td><input type="radio" name="Physical Accessibility-3" value="3" data-type="3">Some accessible features</td>
+                        <td><input type="radio" name="Physical Accessibility-3" value="4" data-type="4">One fully accessible bathroom</td>
+                        <td><input type="radio" name="Physical Accessibility-3" value="5" data-type="5">Multiple accessible bathrooms with emergency call system</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Physical Accessibility - Question 4</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How well-marked and accessible are emergency exits?</td>
+                        <td><input type="radio" name="Physical Accessibility-4" value="1" data-type="1">Standard exits only</td>
+                        <td><input type="radio" name="Physical Accessibility-4" value="2" data-type="2">Some signage</td>
+                        <td><input type="radio" name="Physical Accessibility-4" value="3" data-type="3">Clear signage, partially accessible</td>
+                        <td><input type="radio" name="Physical Accessibility-4" value="4" data-type="4">Accessible exits with clear paths</td>
+                        <td><input type="radio" name="Physical Accessibility-4" value="5" data-type="5">Multiple accessible exits with emergency lighting</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Physical Accessibility - Question 5</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How is the lighting throughout your space?</td>
+                        <td><input type="radio" name="Physical Accessibility-5" value="1" data-type="1">Basic lighting only</td>
+                        <td><input type="radio" name="Physical Accessibility-5" value="2" data-type="2">Some areas well-lit</td>
+                        <td><input type="radio" name="Physical Accessibility-5" value="3" data-type="3">Generally adequate lighting</td>
+                        <td><input type="radio" name="Physical Accessibility-5" value="4" data-type="4">Adjustable lighting in most areas</td>
+                        <td><input type="radio" name="Physical Accessibility-5" value="5" data-type="5">Full adjustable lighting with task-specific options</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Information and Communication - Question 6</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How clear and accessible is your website information?</td>
+                        <td><input type="radio" name="Information and Communication-6" value="1" data-type="1">No website or very basic</td>
+                        <td><input type="radio" name="Information and Communication-6" value="2" data-type="2">Basic information available</td>
+                        <td><input type="radio" name="Information and Communication-6" value="3" data-type="3">Clear essential information</td>
+                        <td><input type="radio" name="Information and Communication-6" value="4" data-type="4">Comprehensive information with some accessibility features</td>
+                        <td><input type="radio" name="Information and Communication-6" value="5" data-type="5">Fully accessible website with multiple formats</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Information and Communication - Question 7</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How visible and clear is your physical space signage?</td>
+                        <td><input type="radio" name="Information and Communication-7" value="1" data-type="1">No signage</td>
+                        <td><input type="radio" name="Information and Communication-7" value="2" data-type="2">Basic name/address only</td>
+                        <td><input type="radio" name="Information and Communication-7" value="3" data-type="3">Clear external signage</td>
+                        <td><input type="radio" name="Information and Communication-7" value="4" data-type="4">External and basic internal wayfinding</td>
+                        <td><input type="radio" name="Information and Communication-7" value="5" data-type="5">Comprehensive wayfinding system with multiple formats</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Information and Communication - Question 8</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How transparent are your pricing and membership options?</td>
+                        <td><input type="radio" name="Information and Communication-8" value="1" data-type="1">No clear pricing</td>
+                        <td><input type="radio" name="Information and Communication-8" value="2" data-type="2">Basic price list</td>
+                        <td><input type="radio" name="Information and Communication-8" value="3" data-type="3">Published rates with some options</td>
+                        <td><input type="radio" name="Information and Communication-8" value="4" data-type="4">Clear pricing with multiple options</td>
+                        <td><input type="radio" name="Information and Communication-8" value="5" data-type="5">Comprehensive pricing with accessibility considerations</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Information and Communication - Question 9</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How available is your information in multiple formats?</td>
+                        <td><input type="radio" name="Information and Communication-9" value="1" data-type="1">Single format only</td>
+                        <td><input type="radio" name="Information and Communication-9" value="2" data-type="2">Some alternate formats</td>
+                        <td><input type="radio" name="Information and Communication-9" value="3" data-type="3">Multiple basic formats</td>
+                        <td><input type="radio" name="Information and Communication-9" value="4" data-type="4">Multiple formats with accessibility</td>
+                        <td><input type="radio" name="Information and Communication-9" value="5" data-type="5">Comprehensive accessible format options</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Information and Communication - Question 10</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How well displayed is emergency information?</td>
+                        <td><input type="radio" name="Information and Communication-10" value="1" data-type="1">No emergency info</td>
+                        <td><input type="radio" name="Information and Communication-10" value="2" data-type="2">Basic emergency contacts</td>
+                        <td><input type="radio" name="Information and Communication-10" value="3" data-type="3">Clear emergency procedures</td>
+                        <td><input type="radio" name="Information and Communication-10" value="4" data-type="4">Comprehensive emergency info</td>
+                        <td><input type="radio" name="Information and Communication-10" value="5" data-type="5">Full emergency system with multiple formats</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Welcome and Orientation - Question 11</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you greet and welcome new visitors?</td>
+                        <td><input type="radio" name="Welcome and Orientation-11" value="1" data-type="1">No formal greeting</td>
+                        <td><input type="radio" name="Welcome and Orientation-11" value="2" data-type="2">Basic greeting only</td>
+                        <td><input type="radio" name="Welcome and Orientation-11" value="3" data-type="3">Consistent welcome process</td>
+                        <td><input type="radio" name="Welcome and Orientation-11" value="4" data-type="4">Structured welcome protocol</td>
+                        <td><input type="radio" name="Welcome and Orientation-11" value="5" data-type="5">Comprehensive welcome system with accessibility options</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Welcome and Orientation - Question 12</td></tr>
+                    <tr class="question-row">
+                        <td class="question">What is your space orientation process?</td>
+                        <td><input type="radio" name="Welcome and Orientation-12" value="1" data-type="1">No orientation</td>
+                        <td><input type="radio" name="Welcome and Orientation-12" value="2" data-type="2">Basic space tour</td>
+                        <td><input type="radio" name="Welcome and Orientation-12" value="3" data-type="3">Structured tour available</td>
+                        <td><input type="radio" name="Welcome and Orientation-12" value="4" data-type="4">Comprehensive orientation process</td>
+                        <td><input type="radio" name="Welcome and Orientation-12" value="5" data-type="5">Personalized orientation with accessibility options</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Welcome and Orientation - Question 13</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you explain available resources?</td>
+                        <td><input type="radio" name="Welcome and Orientation-13" value="1" data-type="1">No explanation</td>
+                        <td><input type="radio" name="Welcome and Orientation-13" value="2" data-type="2">Basic resource list</td>
+                        <td><input type="radio" name="Welcome and Orientation-13" value="3" data-type="3">Structured resource overview</td>
+                        <td><input type="radio" name="Welcome and Orientation-13" value="4" data-type="4">Comprehensive resource guide</td>
+                        <td><input type="radio" name="Welcome and Orientation-13" value="5" data-type="5">Personalized resource matching</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Welcome and Orientation - Question 14</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you track and follow up with newcomers?</td>
+                        <td><input type="radio" name="Welcome and Orientation-14" value="1" data-type="1">No tracking</td>
+                        <td><input type="radio" name="Welcome and Orientation-14" value="2" data-type="2">Basic contact list</td>
+                        <td><input type="radio" name="Welcome and Orientation-14" value="3" data-type="3">Simple follow-up system</td>
+                        <td><input type="radio" name="Welcome and Orientation-14" value="4" data-type="4">Structured follow-up process</td>
+                        <td><input type="radio" name="Welcome and Orientation-14" value="5" data-type="5">Comprehensive engagement system</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Welcome and Orientation - Question 15</td></tr>
+                    <tr class="question-row">
+                        <td class="question">What welcome materials do you provide?</td>
+                        <td><input type="radio" name="Welcome and Orientation-15" value="1" data-type="1">No materials</td>
+                        <td><input type="radio" name="Welcome and Orientation-15" value="2" data-type="2">Basic handout</td>
+                        <td><input type="radio" name="Welcome and Orientation-15" value="3" data-type="3">Standard welcome packet</td>
+                        <td><input type="radio" name="Welcome and Orientation-15" value="4" data-type="4">Comprehensive welcome materials</td>
+                        <td><input type="radio" name="Welcome and Orientation-15" value="5" data-type="5">Accessible materials in multiple formats</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Basic Safety and Comfort - Question 16</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How prepared are you for first aid emergencies?</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-16" value="1" data-type="1">No first aid</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-16" value="2" data-type="2">Basic first aid kit</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-16" value="3" data-type="3">Accessible first aid station</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-16" value="4" data-type="4">Complete first aid setup</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-16" value="5" data-type="5">Professional medical kit with trained staff</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Basic Safety and Comfort - Question 17</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How are safety rules communicated?</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-17" value="1" data-type="1">No posted rules</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-17" value="2" data-type="2">Basic rules posted</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-17" value="3" data-type="3">Clear safety guidelines</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-17" value="4" data-type="4">Comprehensive safety protocol</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-17" value="5" data-type="5">Multi-format accessible safety system</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Basic Safety and Comfort - Question 18</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How well maintained are your facilities?</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-18" value="1" data-type="1">Minimal maintenance</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-18" value="2" data-type="2">Basic cleaning</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-18" value="3" data-type="3">Regular maintenance</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-18" value="4" data-type="4">Proactive maintenance system</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-18" value="5" data-type="5">Comprehensive facility management</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Basic Safety and Comfort - Question 19</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you manage environmental comfort?</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-19" value="1" data-type="1">No controls</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-19" value="2" data-type="2">Basic temperature control</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-19" value="3" data-type="3">Adjustable environment</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-19" value="4" data-type="4">Multiple comfort options</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-19" value="5" data-type="5">Comprehensive comfort management</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Basic Safety and Comfort - Question 20</td></tr>
+                    <tr class="question-row">
+                        <td class="question">Do you provide quiet or rest areas?</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-20" value="1" data-type="1">No quiet space</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-20" value="2" data-type="2">Informal quiet area</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-20" value="3" data-type="3">Designated quiet space</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-20" value="4" data-type="4">Dedicated rest area</td>
+                        <td><input type="radio" name="Basic Safety and Comfort-20" value="5" data-type="5">Multiple accessible rest spaces</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Initial Inclusion Practices - Question 21</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you handle bathroom accessibility?</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-21" value="1" data-type="1">Gendered only</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-21" value="2" data-type="2">One neutral option</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-21" value="3" data-type="3">Multiple neutral options</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-21" value="4" data-type="4">Accessible neutral options</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-21" value="5" data-type="5">Comprehensive inclusive facilities</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Initial Inclusion Practices - Question 22</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How diverse are your promotional materials?</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-22" value="1" data-type="1">No diversity</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-22" value="2" data-type="2">Limited representation</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-22" value="3" data-type="3">Some diversity shown</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-22" value="4" data-type="4">Good representation mix</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-22" value="5" data-type="5">Comprehensive inclusive representation</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Initial Inclusion Practices - Question 23</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you handle harassment prevention?</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-23" value="1" data-type="1">No policy</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-23" value="2" data-type="2">Basic policy exists</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-23" value="3" data-type="3">Clear policy posted</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-23" value="4" data-type="4">Comprehensive policy system</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-23" value="5" data-type="5">Full inclusion policy with training</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Initial Inclusion Practices - Question 24</td></tr>
+                    <tr class="question-row">
+                        <td class="question">How do you collect and handle feedback?</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-24" value="1" data-type="1">No system</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-24" value="2" data-type="2">Basic suggestions</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-24" value="3" data-type="3">Multiple feedback options</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-24" value="4" data-type="4">Structured feedback system</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-24" value="5" data-type="5">Comprehensive accessible feedback</td>
+                    </tr>
+                <tr class='section-header'><td colspan='6'>Initial Inclusion Practices - Question 25</td></tr>
+                    <tr class="question-row">
+                        <td class="question">What inclusion training does your team receive?</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-25" value="1" data-type="1">No training</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-25" value="2" data-type="2">Basic awareness</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-25" value="3" data-type="3">Some inclusion training</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-25" value="4" data-type="4">Regular inclusion training</td>
+                        <td><input type="radio" name="Initial Inclusion Practices-25" value="5" data-type="5">Comprehensive ongoing training</td>
+                    </tr>
+                
+            </table>
+            <br>
+            <button type="button" onclick="calculateScore()">Generate Score</button>
+            <button type="button" onclick="debugSetAll(1)">Debug (Set All to 1)</button>
+            <button type="button" onclick="debugSetAll(2)">Debug (Set All to 2)</button>
+            <button type="button" onclick="debugSetAll(3)">Debug (Set All to 3)</button>
+            <button type="button" onclick="debugSetAll(4)">Debug (Set All to 4)</button>
+            <button type="button" onclick="debugSetAll(5)">Debug (Set All to 5)</button>
+        </form>
+        <div id="results"></div>
+    </body>
+    </html>
+    
