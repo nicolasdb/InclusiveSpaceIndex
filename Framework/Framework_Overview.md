@@ -15,7 +15,6 @@
 **Topics Assessment Structure**
 
 #### 1. Physical Accessibility Topic
-*Maximum Score: 20 points (5 questions × 4 points)*
 Questions:
 1. Is the entrance accessible to people with reduced mobility? (0-4)
 2. Are pathways clear and wide enough for wheelchair access? (0-4)
@@ -29,35 +28,35 @@ Questions:
 - Achievement Gate: 20 points minimum to unlock Intermediate
 
 #### Assessment Questions:
-1. Physical Accessibility (0-5)
+1. Physical Accessibility
    - Basic entrance accessibility
    - Clear signage
    - Navigation ease
    - Bathroom accessibility
    - Emergency exits
 
-2. Information Accessibility (0-5)
+2. Information Accessibility
    - Website clarity
    - Contact information
    - Opening hours
    - Basic pricing
    - Location details
 
-3. Visual Representation (0-5)
+3. Visual Representation
    - Diverse imagery
    - Inclusive language
    - Multiple languages
    - Clear symbols
    - Welcoming messaging
 
-4. Basic Safety Measures (0-5)
+4. Basic Safety Measures
    - Emergency procedures
    - First aid availability
    - Clear safety rules
    - Contact persons
    - Incident reporting
 
-5. Welcome Process (0-5)
+5. Welcome Process
    - Greeting protocol
    - Space orientation
    - Basic information sharing
@@ -77,24 +76,24 @@ Questions:
 
 ## Scoring Guidelines
 
-### Scoring Scale (0-4 points)
-0: Not implemented
+### Scoring Scale (0-5 points)
+0 pt : Not implemented
   - Example: No consideration given to this aspect
   - [More examples to be developed...]
 
-0.5: Basic awareness
+0.5 pt : Basic awareness
   - Example: Recognition of the need, initial discussions started
   - [More examples to be developed...]
 
-1: Partial implementation
+1 pt : Partial implementation
   - Example: Some measures in place but not systematic
   - [More examples to be developed...]
 
-3: Good implementation
+3 pt : Good implementation
   - Example: Systematic approach with regular evaluation
   - [More examples to be developed...]
 
-4: Strong implementation
+5 pt : Strong implementation
   - Example: Comprehensive system with community involvement
   - [More examples to be developed...]
 
