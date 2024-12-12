@@ -21,7 +21,6 @@
 - `status: good first issue` - Good for newcomers
 - `status: in progress` - Being worked on
 - `status: blocked` - Blocked by something
-- `status: ready for review` - Ready for community review
 
 ### Priority Labels
 - `priority: low` - Nice to have

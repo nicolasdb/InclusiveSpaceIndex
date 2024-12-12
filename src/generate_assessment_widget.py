@@ -61,67 +61,7 @@ def generate_assessment_widget(csv_file):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inclusion and Accessibility Assessment</title>
-    <style>
-        body {{
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }}
-        
-        .header {{
-            background-color: #f2f2f2;
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1;
-        }}
-        
-        .questions-container {{
-            margin-top: 270px;
-            padding: 20px;
-            max-height: calc(100vh - 240px);
-            overflow-y: auto;
-        }}
-        
-        table {{
-            width: auto;
-            border-collapse: collapse;
-        }}
-        
-        th, td {{
-            padding: 10px;
-            text-align: left;
-        }}
-        
-        th {{
-            background-color: #f2f2f2;
-        }}
-        
-        td.question {{
-            width: 300px;
-        }}
-        
-        button {{
-            margin: 5px;
-            padding: 10px;
-            font-size: 14px;
-        }}
-        
-        .section-header {{
-            background-color: #e0e0e0;
-            font-weight: bold;
-        }}
-        
-        .question-row:nth-child(even) {{
-            background-color: #f9f9f9;
-        }}
-        
-        .question-row:nth-child(odd) {{
-            background-color: #e6f7ff;
-        }}
-    </style>
+    <link rel="stylesheet" href="styles.css">
     <script>
         const MAX_POSSIBLE_SCORE = {max_possible_score};
 
@@ -142,36 +82,44 @@ def generate_assessment_widget(csv_file):
         }}
     // Trigger the initial calculation when the page loads
     window.addEventListener('load', calculateScore);
-
     </script>
 </head>
 <body>
-    <div class="header">
-        <h2>Inclusion and Accessibility Assessment</h2>
-        <p>When marking this assessment, please use the following guidelines:</p>
-        <ul>
-            <li>1 - No accessibility considerations</li>
-            <li>2 - Awareness of needs, planning stage</li>
-            <li>3 - Some accommodations (like a temporary ramp)</li>
-            <li>4 - Permanent ramp, wide doors</li>
-            <li>5 - Automatic doors, multiple access options</li>
-        </ul>
-        <div id="score">
-            <p>Total Score: <span id="totalScore">0</span> / <span id="maxScore">0</span> points</p>
+    <div class="main-content">
+        <div class="header">
+            <h1>Begin Your Inclusion Journey</h1>        
+            <p>Your first steps focus on the essentials of creating a welcoming space. Here, you'll explore basic accessibility and inclusion through practical, achievable goals. From physical accessibility to welcome practices, this assessment will help you reflect on how welcoming your space truly is and you'll discover opportunities to make your space more safe for everyone.</p>
+            
+            <p>This isn't about achieving a perfect score - it's about honest reflection and identifying areas for growth. Each question is an opportunity to think deeply about your space and community.</p>
+            
+            <p>Before you begin:</p>
+            <ul>
+                <li>Take your time to reflect honestly</li>
+                <li>If you're unsure about a question, leave it blank - it's better than guessing</li>
+                <li>Consider gathering input from different community members</li>
+                <li>Remember: this is a starting point for growth, not a final judgment</li>
+            </ul>
+            
+            
+            <div id="score">
+                <p>Total Score: <span id="totalScore">0</span> / <span id="maxScore">0</span> points</p>
+            </div>
+        </div>
+   
+        <div class="questions-container">
+            <form>
+                <table>
+                    {''.join(question_rows)}
+                </table>
+                <br>
+            </form>
+        </div>
+        <div id="results">
+            <p>Want to understand more about the scoring system and what your results mean? <a href="https://github.com/nicolasdb/InclusiveSpaceIndex/blob/diagnostic_inclusion/Framework/level1-scoring.md">Check out our detailed scoring guide</a></p>
         </div>
     </div>
-    
-    <div class="questions-container">
-        <form>
-            <table>
-                {''.join(question_rows)}
-            </table>
-            <br>
-        </form>
-        <div id="results"></div>
     </body>
-</html>
-    """
+</html>"""
 
     # Write HTML content to file
     with open(widget_file_path, 'w', encoding='utf-8') as f:

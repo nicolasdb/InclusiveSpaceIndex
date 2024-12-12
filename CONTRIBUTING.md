@@ -1,99 +1,97 @@
 # Contributing to the Inclusive Space Assessment Framework
 
-First off, thank you for considering contributing to this project! Your interest in making spaces more inclusive is exactly what this community needs. Whether you're running a space, have experience with inclusion work, or are just starting your journey - your perspective matters.
+First off, thank you for considering contributing to this project! Whether you're running a community space, working on inclusion initiatives, or just starting your inclusion journey - your experience and perspective matter.
 
-## Why read this guide
+## Why Read This Guide
 
-This document helps you understand how to contribute effectively and what to expect in the process. Following these guidelines helps us build a more inclusive and welcoming assessment framework together.
+This document helps you understand the many ways you can contribute to making spaces more inclusive. We believe that building welcoming communities is a collective effort that benefits from diverse perspectives and experiences.
 
-## Types of contributions we're looking for
+## Ways to Contribute
 
-There are many ways to contribute to this project:
+There are many valuable ways to help improve this framework:
 
-- Share your experiences with inclusion assessment
-- Suggest improvements to questions or scoring
-- Test the framework in your space
-- Help with translations
-- Document success stories
-- Provide feedback on clarity and usability
-- Help improve documentation
-- Contribute code for automation tools
+### Share Your Experience
+- Try the assessment in your space and share what you learned
+- Tell us about inclusion initiatives that worked (or didn't)
+- Share how you adapted the framework for your context
+- Document challenges you faced and how you addressed them
+- Suggest improvements based on real-world use
 
-Even if you're just starting your inclusion journey, your perspective is valuable - sometimes the best insights come from fresh eyes!
+### Help Others Learn
+- Create guides for specific types of spaces
+- Share tips for implementing inclusion practices
+- Mentor spaces just starting their journey
+- Translate materials into other languages
+- Document creative solutions to common challenges
 
-## Ground rules
+### Improve the Framework
+- Suggest clearer ways to phrase questions
+- Identify gaps in the assessment areas
+- Propose new challenge ideas
+- Help make materials more accessible
+- Test proposed changes in your space
+
+### Build Community
+- Connect with other spaces using the framework
+- Share resources and tools you've developed
+- Participate in peer review processes
+- Help answer questions from other spaces
+- Organize local meetups or online discussions
+
+### Technical Contributions
+- Help automate assessment processes
+- Improve documentation structure
+- Create visualization tools
+- Add translation support
+- Fix bugs in existing tools
+
+## Getting Started
+
+1. **Choose Your Path**: Start with what you know best. Your experience running a space, implementing inclusion practices, or working with communities is valuable.
+
+2. **Share Your Intent**: Open an issue to discuss what you'd like to contribute. This helps us provide better support and connects you with others working on similar things.
+
+3. **Start Small**: Try the assessment, share your thoughts, or help clarify existing materials. Every contribution helps!
+
+## Ground Rules
 
 To maintain a welcoming and productive community:
 
 - Be kind and respectful in all interactions
-- Start with "yes, and" rather than "no, but"
-- Explain your reasoning to help others learn
-- Welcome and encourage new contributors
-- Focus on the shared goal of better inclusion
-- Accept constructive feedback gracefully
+- Value different perspectives and experiences
+- Share learning from both successes and challenges
+- Focus on making spaces more welcoming for everyone
+- Support and encourage new contributors
 - Be patient - inclusion work takes time
 
-## Your first contribution
+## Learning From Each Other
 
-Unsure where to begin? Here are some easy ways to start:
+We believe that sharing our challenges is just as important as sharing our successes. Why?
+- Real inclusion work is messy and complex
+- Others might be facing similar challenges
+- Failed attempts often teach us the most valuable lessons
+- Being open about difficulties builds trust
+- Solutions often emerge from shared struggles
 
-1. Try the assessment in your space and share your experience
-2. Review questions for clarity and suggest improvements
-3. Look for issues tagged 'good-first-issue' or 'help-wanted'
-4. Share ideas for making the framework more engaging
+When sharing your experiences, don't hesitate to include:
+- Approaches that didn't work
+- Unexpected challenges you faced
+- How you adapted your plans
+- What you learned from the process
+- How it shaped your next steps
 
-New to open source? Check out [Make a Pull Request](http://makeapullrequest.com/) for a friendly introduction!
+## Getting Help
 
-## Getting started technically
-
-1. Fork the repository
-2. Create your feature branch
-3. Make your changes
-4. Run any relevant tests
-5. Update documentation as needed
-6. Submit a pull request
-
-For small fixes (typos, clarifications, etc.), you can edit directly on GitHub.
-
-## How to report issues
-
-When reporting issues, please include:
-
-1. What you were trying to do
-2. What you expected to happen
-3. What actually happened
-4. Any relevant screenshots or examples
-5. Ideas for how to fix it (if you have any)
-
-## Suggesting improvements
-
-Have an idea for making the framework better? We'd love to hear it! When suggesting improvements:
-
-1. Explain the challenge you're addressing
-2. Share your suggested solution
-3. Describe how it helps spaces become more inclusive
-4. Consider different types of spaces and resources
-
-## Development process
-
-1. Changes are proposed through pull requests
-2. Community feedback is gathered
-3. Changes are tested where possible
-4. Documentation is updated
-5. Changes are merged and released
-
-## Getting help
-
-Need help? You can:
-
-- Open an issue with your question
+Need support? You can:
+- Open an issue to ask questions
 - Join our community discussions
+- Connect with other spaces
 - Reach out to current contributors
 
 ## Recognition
 
-All contributors will be acknowledged in our documentation. We believe in celebrating everyone who helps make spaces more inclusive!
+We celebrate all forms of contribution! Everyone who helps make spaces more inclusive will be acknowledged in our documentation.
 
 ---
 
-Remember: Every contribution matters, no matter how small. Together, we're building tools that help create more welcoming spaces for everyone.
+Remember: Every step toward more inclusive spaces matters, no matter how small. We're building this together!
