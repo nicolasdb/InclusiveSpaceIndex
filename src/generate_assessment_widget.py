@@ -4,9 +4,8 @@ import os
 def generate_assessment_widget(csv_file):
     # Get the absolute path to the CSV file
     csv_path = os.path.join(os.path.dirname(__file__), csv_file)
-    widget_file_path = os.path.join(os.path.dirname(csv_path), 'widget.html')
-
-
+    # Set output path to root directory with index.html
+    widget_file_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'index.html')
 
     with open(csv_path, 'r') as f:
         reader = list(csv.reader(f))
@@ -56,8 +55,7 @@ def generate_assessment_widget(csv_file):
             question_rows.append(row)
 
     # HTML template
-    html_content = f"""
-<!DOCTYPE html>
+    html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
