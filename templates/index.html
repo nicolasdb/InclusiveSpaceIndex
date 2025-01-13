@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusive Space Index Assessment</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inclusive Space Index Assessment</h1>
+        
+        <div class="header">
+            <p>Your first steps focus on the essentials of creating a welcoming space. Here, you'll explore basic accessibility and inclusion through practical, achievable goals.</p>
+            
+            <p>This isn't about achieving a perfect score - it's about honest reflection and identifying areas for growth. Each question is an opportunity to think deeply about your space and community.</p>
+            
+            <p>Before you begin:</p>
+            <ul>
+                <li>Take your time to reflect honestly</li>
+                <li>If you're unsure about a question, leave it blank - it's better than guessing</li>
+                <li>Consider gathering input from different community members</li>
+                <li>Remember: this is a starting point for growth, not a final judgment</li>
+            </ul>
+        </div>
+        
+        <form hx-post="/submit" hx-target="#results">
+            {{ assessment_widget | safe }}
+            
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Submit Assessment</button>
+            </div>
+        </form>
+        
+        <div id="results"></div>
+        
+        <div class="footer">
+            <p>Want to understand more about the scoring system and what your results mean? 
+            <a href="https://github.com/nicolasdb/InclusiveSpaceIndex/blob/diagnostic_inclusion/Framework/level1-scoring.md">
+                Check out our detailed scoring guide
+            </a></p>
+        </div>
+    </div>
+</body>
+</html>

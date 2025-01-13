@@ -1,41 +1,56 @@
-# Inclusive Space Assessment Framework
+# Inclusive Space Index Assessment Tool
 
-Creating inclusive spaces isn't just about checking boxes—it's about building communities where everyone can thrive. This framework aim to helps community spaces (makerspaces, fablabs, and other collaborative environments) embark on a journey toward meaningful inclusion, making the process engaging, measurable, and community-driven.
+The Inclusive Space Index Assessment Tool is designed to help spaces evaluate and improve their inclusivity and accessibility. This tool provides a structured way to assess various aspects of your space, from physical accessibility to welcome practices.
 
-## Why this matters?
-Many spaces want to become more inclusive but struggle with where to start or how to measure progress. Traditional assessments can feel overwhelming or disconnecting. We believe that by making the journey interactive, progressive, and community-supported, we can help spaces create lasting positive change.
+## Purpose
 
-## Our approach
-We combine practical assessment tools with engaging community mechanics to create a framework that:
-- Makes inclusion progress tangible and measurable
-- Breaks down overwhelming tasks into achievable steps
-- Builds community support through peer connections
-- Celebrates progress while encouraging growth
-- Keeps the focus on practical, impactful changes
+This assessment tool aims to:
+- Help spaces identify areas for improvement in inclusivity
+- Provide clear, actionable feedback
+- Guide development of more welcoming environments
+- Support continuous improvement in accessibility
 
-## Getting started
-1. Begin your journey with our Level 1 assessment
-2. Connect with other spaces on similar paths
-3. Take on challenges that match your capacity
-4. Progress at your own pace with community support
+## Assessment Areas
 
-## Community
-This is a community-driven project. We believe that inclusion work is stronger when we learn from each other. Join our growing network of spaces working toward positive change.
+The tool evaluates five key dimensions:
 
-## Contributing
-Your experience and insights matter! Whether you're just starting your inclusion journey or have years of experience, there are many ways to contribute:
-- Share your experiences
-- Suggest improvements
-- Help with translations
-- Test new features
-- Join the discussion
+1. **Physical Accessibility**
+   - Entrance accessibility
+   - Internal navigation
+   - Bathroom facilities
+   - Emergency exits
+   - Lighting conditions
 
-## Credits
-This project builds upon the work of many community contributors and was inspired by architecture from [predecessor project name]. The assessment framework itself draws from real experiences in community spaces and incorporates gamification principles to make inclusion work more engaging and sustainable.
+2. **Information and Communication**
+   - Website accessibility
+   - Signage clarity
+   - Pricing transparency
+   - Information formats
+   - Emergency information
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+3. **Welcome and Orientation**
+   - Visitor greeting
+   - Space orientation
+   - Resource explanation
+   - Newcomer follow-up
+   - Welcome materials
 
----
+4. **Basic Safety and Comfort**
+   - First aid preparedness
+   - Safety communication
+   - Facility maintenance
+   - Environmental comfort
+   - Rest areas
 
-*Together, we can build more welcoming spaces for everyone.*
+5. **Initial Inclusion Practices**
+   - Bathroom accessibility
+   - Promotional materials
+   - Harassment prevention
+   - Feedback systems
+   - Team training
+
+## Philosophy
+
+This assessment isn't about achieving a perfect score—it's about honest reflection and identifying opportunities for growth. Each question is designed to prompt thoughtful consideration of how your space can become more welcoming and accessible to all.
+
+For technical setup and deployment instructions, please see INSTRUCTIONS.md.

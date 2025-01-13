@@ -1,0 +1,30 @@
+<div class="result-container">
+    <h2>Assessment Results</h2>
+    <div class="result-summary">
+        <p>Thank you for completing the assessment! Your responses have been recorded.</p>
+        <div class="score-display">
+            <h3>Total Score: {{ total_score }}</h3>
+        </div>
+    </div>
+    
+    <div class="share-option">
+        <h4>Receive Results by Email</h4>
+        <p>Get your results sent to your email address.</p>
+        <form action="/send-email" method="POST" hx-post="/send-email" hx-target="#email-result">
+            <input type="email" name="email" class="email-input" placeholder="Enter your email address" required>
+            <div class="consent-checkbox">
+                <input type="checkbox" id="consent" name="consent" required>
+                <label for="consent">I agree to share my assessment results and email address with the Inclusive Space Index team for research and improvement purposes.</label>
+            </div>
+            <input type="hidden" name="total_score" value="{{ total_score }}">
+            <button type="submit" class="btn-secondary">Send Results</button>
+        </form>
+        <div id="email-result"></div>
+    </div>
+
+    <div class="next-steps">
+        <h3>Next Steps</h3>
+        <p>Review your responses and consider areas where you can make improvements. Remember, this assessment is a tool for growth and development.</p>
+        <a href="/" class="btn-primary">Start New Assessment</a>
+    </div>
+</div>
