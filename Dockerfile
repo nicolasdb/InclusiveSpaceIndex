@@ -19,4 +19,4 @@ EXPOSE 7860
 ENV PYTHONPATH=/app
 
 # Command to run the application
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["python", "app.py"]

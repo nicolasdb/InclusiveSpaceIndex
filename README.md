@@ -1,3 +1,14 @@
+---
+title: Inclusive Space Index Assessment Tool
+emoji: 🌈
+colorFrom: blue
+colorTo: purple
+sdk: docker
+sdk_version: "1.0"
+app_file: app.py
+pinned: false
+---
+
 # Inclusive Space Index Assessment Tool
 
 The Inclusive Space Index Assessment Tool is designed to help spaces evaluate and improve their inclusivity and accessibility. This tool provides a structured way to assess various aspects of your space, from physical accessibility to welcome practices.
