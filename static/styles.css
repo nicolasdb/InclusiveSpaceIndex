@@ -130,6 +130,45 @@ h1 {
     border-radius: 4px;
 }
 
+.score-meaning {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.score-meaning h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.2em;
+}
+
+.score-meaning p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.score-meaning ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.score-meaning li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.score-meaning li:before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
 .next-steps {
     margin-top: 1.5rem;
     text-align: center;

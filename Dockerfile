@@ -17,6 +17,10 @@ EXPOSE 7860
 
 # Set environment variables
 ENV PYTHONPATH=/app
+ENV SMTP_HOST=${SMTP_HOST}
+ENV SMTP_PORT=${SMTP_PORT}
+ENV SMTP_USER=${SMTP_USER}
+ENV SMTP_PASS=${SMTP_PASS}
 
 # Command to run the application
 CMD ["python", "app.py"]
