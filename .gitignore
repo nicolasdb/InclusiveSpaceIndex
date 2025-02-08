@@ -49,4 +49,3 @@ Thumbs.db
 
 # Project specific
 *.csv
-!data/questions.csv  # Include the default questions file
