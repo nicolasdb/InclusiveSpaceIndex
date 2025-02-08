@@ -4,8 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-.venv/
-venv/
 env/
 build/
 develop-eggs/
@@ -23,59 +21,32 @@ wheels/
 .installed.cfg
 *.egg
 
-# Environment variables and secrets
+# Virtual Environment
+venv/
+ENV/
+
+# Environment Variables
 .env
-.env.local
-.env.*.local
-.env.development
-.env.test
-.env.production
-.env.local
-.env.*.local
-*.pem
-*.key
+.env.*
 
 # IDE
 .idea/
 .vscode/
 *.swp
 *.swo
-.DS_Store
-.vs/
-*.sublime-workspace
-*.sublime-project
+*~
 
-# Logs and databases
+# Logs
 *.log
-*.sqlite
-*.db
-*.sqlite3
-log/
 logs/
 
-# Test coverage and testing
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-test-reports/
+# Docker
+.docker/
 
-# Documentation
-docs/_build/
-docs/generated/
-_docs/
-*.pdf
-!assessmentL1.pdf
+# Operating System
+.DS_Store
+Thumbs.db
 
 # Project specific
-temp/
-tmp/
-*.tmp
-*.bak
-node_modules/
+*.csv
+!data/questions.csv  # Include the default questions file

@@ -1,0 +1,17 @@
+services:
+  streamlit:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app:/app
+    env_file:
+      - ./app/.env
+    environment:
+      # Questions Configuration
+      - QUESTIONS_FILE=/data/questions.csv  # Default: CSV file source
+      # Option 2: Supabase Configuration (uncomment and set these for using Supabase as questions source)
+      # - QUESTIONS_SOURCE=supabase
+      # - QUESTIONS_TABLE=maturity_questions

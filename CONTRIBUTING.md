@@ -1,97 +1,72 @@
-# Contributing to the Inclusive Space Assessment Framework
+# Contributing Guidelines
 
-First off, thank you for considering contributing to this project! Whether you're running a community space, working on inclusion initiatives, or just starting your inclusion journey - your experience and perspective matter.
+## Project Structure
 
-## Why Read This Guide
+```plaintext
+app/
+├── modules/           # Core functionality modules
+│   ├── data_loader.py      # Question loading and management
+│   ├── score_calculator.py # Score calculation logic
+│   ├── visualization.py    # Chart generation
+│   └── ui_components.py    # Streamlit UI components
+├── utils/            # Utility functions and constants
+│   ├── constants.py        # Configuration constants
+│   └── validators.py       # Input validation
+└── streamlit_app.py  # Main application entry point
+```
 
-This document helps you understand the many ways you can contribute to making spaces more inclusive. We believe that building welcoming communities is a collective effort that benefits from diverse perspectives and experiences.
+## Development Guidelines
 
-## Ways to Contribute
+1. **Code Style**
+   - Use type hints for all function parameters and return values
+   - Include docstrings for all modules, classes, and functions
+   - Keep functions focused and single-purpose
 
-There are many valuable ways to help improve this framework:
+2. **Error Handling**
+   - Use try/except blocks for external operations (file I/O, database)
+   - Provide meaningful error messages
+   - Log errors appropriately
+   - Validate inputs before processing
 
-### Share Your Experience
-- Try the assessment in your space and share what you learned
-- Tell us about inclusion initiatives that worked (or didn't)
-- Share how you adapted the framework for your context
-- Document challenges you faced and how you addressed them
-- Suggest improvements based on real-world use
+3. **Testing**
+   - Write unit tests for new functionality
+   - Ensure existing tests pass before submitting changes
+   - Include edge cases in test coverage
 
-### Help Others Learn
-- Create guides for specific types of spaces
-- Share tips for implementing inclusion practices
-- Mentor spaces just starting their journey
-- Translate materials into other languages
-- Document creative solutions to common challenges
+4. **Documentation**
+   - Update relevant documentation when making changes
+   - Include inline comments for complex logic
+   - Keep README.md and INSTRUCTIONS.md up to date
 
-### Improve the Framework
-- Suggest clearer ways to phrase questions
-- Identify gaps in the assessment areas
-- Propose new challenge ideas
-- Help make materials more accessible
-- Test proposed changes in your space
+## Pull Request Process
 
-### Build Community
-- Connect with other spaces using the framework
-- Share resources and tools you've developed
-- Participate in peer review processes
-- Help answer questions from other spaces
-- Organize local meetups or online discussions
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes following the guidelines above
+4. Update documentation as needed
+5. Submit a pull request with a clear description of changes
 
-### Technical Contributions
-- Help automate assessment processes
-- Improve documentation structure
-- Create visualization tools
-- Add translation support
-- Fix bugs in existing tools
+## Development Setup
 
-## Getting Started
+1. Clone the repository
+2. Install dependencies:
 
-1. **Choose Your Path**: Start with what you know best. Your experience running a space, implementing inclusion practices, or working with communities is valuable.
+   ```bash
+   pip install -r app/requirements.txt
+   ```
 
-2. **Share Your Intent**: Open an issue to discuss what you'd like to contribute. This helps us provide better support and connects you with others working on similar things.
+3. Create a `.env` file with required variables
+4. Run the application:
 
-3. **Start Small**: Try the assessment, share your thoughts, or help clarify existing materials. Every contribution helps!
+   ```bash
+   docker compose up --build
+   ```
 
-## Ground Rules
+## Questions or Issues?
 
-To maintain a welcoming and productive community:
+Feel free to open an issue for:
 
-- Be kind and respectful in all interactions
-- Value different perspectives and experiences
-- Share learning from both successes and challenges
-- Focus on making spaces more welcoming for everyone
-- Support and encourage new contributors
-- Be patient - inclusion work takes time
-
-## Learning From Each Other
-
-We believe that sharing our challenges is just as important as sharing our successes. Why?
-- Real inclusion work is messy and complex
-- Others might be facing similar challenges
-- Failed attempts often teach us the most valuable lessons
-- Being open about difficulties builds trust
-- Solutions often emerge from shared struggles
-
-When sharing your experiences, don't hesitate to include:
-- Approaches that didn't work
-- Unexpected challenges you faced
-- How you adapted your plans
-- What you learned from the process
-- How it shaped your next steps
-
-## Getting Help
-
-Need support? You can:
-- Open an issue to ask questions
-- Join our community discussions
-- Connect with other spaces
-- Reach out to current contributors
-
-## Recognition
-
-We celebrate all forms of contribution! Everyone who helps make spaces more inclusive will be acknowledged in our documentation.
-
----
-
-Remember: Every step toward more inclusive spaces matters, no matter how small. We're building this together!
+- Bug reports
+- Feature requests
+- Documentation improvements
+- General questions

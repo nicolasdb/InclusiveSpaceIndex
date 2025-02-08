@@ -1,0 +1,7 @@
+streamlit
+supabase
+pandas
+matplotlib
+python-dotenv>=1.0.0
+plotly
+streamlit-extras
