@@ -1,13 +1,3 @@
----
-title: Inclusive Space Index Assessment Tool
-emoji: 🌈
-colorFrom: blue
-colorTo: purple
-sdk: docker
-app_file: ./app/streamlit_app.py
-pinned: false
----
-
 # Inclusive Space Index Assessment Tool
 
 A structured assessment tool designed to help spaces evaluate and improve their inclusivity and accessibility.
@@ -31,14 +21,28 @@ A structured assessment tool designed to help spaces evaluate and improve their 
 
 Interested in contributing? Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
+### Quick Start
+
+1. Clone the repository
+2. Set up environment variables (see [SETUP.md](SETUP.md))
+3. Run the application:
+
+   ```bash
+   docker compose up --build
+   ```
+
+4. Access the application at `http://localhost:8501`
+
 ## Documentation
 
-- [Instructions](INSTRUCTIONS.md) - Detailed setup and deployment guide
-- [Contributing](CONTRIBUTING.md) - Development and contribution guidelines
+- [SETUP.md](SETUP.md) - Detailed deployment and configuration guide
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Development and contribution guidelines
+- [TECHNICAL.md](TECHNICAL.md) - Technical architecture and implementation details
 
 ## License
 
 > Copyright 2025 Nicolas de Barquin
+>
 > This project is licensed under the Apache License 2.0. See the LICENSE file for details.
 
 Please note that this project uses Docker and Streamlit, which are licensed under their respective licenses.
