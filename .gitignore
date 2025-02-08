@@ -47,5 +47,3 @@ logs/
 .DS_Store
 Thumbs.db
 
-# Project specific
-*.csv
