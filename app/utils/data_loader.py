@@ -16,7 +16,7 @@ def get_supabase_client():
     key = os.getenv("SUPABASE_KEY", "")
     return create_client(url, key)
 
-def load_questions_from_csv(file_path: str = "/data/questions.csv") -> pd.DataFrame:
+def load_questions_from_csv(file_path: str = None) -> pd.DataFrame:
     """
     Load questions from CSV file.
     
@@ -27,17 +27,34 @@ def load_questions_from_csv(file_path: str = "/data/questions.csv") -> pd.DataFr
         DataFrame containing questions data
     """
     try:
-        # Debug file path
-        logger.debug(f"Attempting to load CSV from: {file_path}")
-        logger.debug(f"Current working directory: {os.getcwd()}")
+        # Get file path from environment variable or use provided path
+        env_path = os.getenv("QUESTIONS_FILE", "/data/questions.csv")
+        file_path = file_path or env_path
+
+        # Try multiple possible file paths
+        possible_paths = [
+            file_path,  # Try environment variable path or provided path first
+            "data/questions.csv",  # Relative to project root
+            "../data/questions.csv",  # One level up (from app dir)
+            "../../data/questions.csv",  # Two levels up
+        ]
         
-        # Check if file exists
-        if not os.path.exists(file_path):
-            logger.error(f"File not found: {file_path}")
-            raise FileNotFoundError(f"Questions file not found at: {file_path}")
-            
-        # Load CSV with explicit encoding
-        df = pd.read_csv(file_path, encoding='utf-8')
+        # Debug paths being tried
+        logger.debug(f"Current working directory: {os.getcwd()}")
+        logger.debug(f"Attempting to load CSV from these paths: {possible_paths}")
+        
+        # Try each path
+        for try_path in possible_paths:
+            logger.debug(f"Trying path: {try_path}")
+            if os.path.exists(try_path):
+                logger.info(f"Found questions file at: {try_path}")
+                df = pd.read_csv(try_path, encoding='utf-8')
+                break
+        else:
+            # If no file is found, raise error with all attempted paths
+            error_msg = f"Questions file not found in any of these locations: {possible_paths}"
+            logger.error(error_msg)
+            raise FileNotFoundError(error_msg)
         
         # Debug DataFrame info
         logger.debug(f"DataFrame shape: {df.shape}")
