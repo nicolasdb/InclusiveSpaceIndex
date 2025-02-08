@@ -4,9 +4,9 @@ Main Streamlit application for the maturity assessment.
 import os
 import logging
 import streamlit as st
-import pandas as pd
 from dotenv import load_dotenv
 
+from utils.data_loader import load_questions
 from utils.styles import inject_custom_css
 from utils.state import init_session_state, update_scores
 from components.sidebar import display_score_overview, display_reset_button
@@ -60,9 +60,9 @@ def main():
             Select a section and answer the questions to get a detailed analysis.
         """)
         
-        # Load questions
-        logger.debug("Loading questions from CSV")
-        df = pd.read_csv("/data/questions.csv")
+        # Load questions using enhanced data loader
+        logger.debug("Loading questions")
+        df = load_questions()
         logger.debug(f"Loaded {len(df)} questions")
         
         # Calculate current scores
