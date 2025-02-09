@@ -37,7 +37,7 @@ def main():
     
     # Page config
     st.set_page_config(
-        page_title="Maturity Assessment Tool",
+        page_title="Inclusive Space Index Assessment Tool",
         page_icon="📊",
         layout="wide",
     )
@@ -54,9 +54,9 @@ def main():
             st.session_state.phase = "assessment"
         
         # Main title with description
-        st.title("🎯 Maturity Assessment Tool")
+        st.title("🎯 Inclusive Space Index Assessment Tool")
         st.markdown("""
-            This tool helps you assess your organization's maturity level across different areas.
+            This tool helps you assess your space's inclusivity and accessibility across different areas.
             Select a section and answer the questions to get a detailed analysis.
         """)
         
