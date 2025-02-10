@@ -60,8 +60,8 @@ Choose one of these options:
 Create a CSV file with this structure:
 
 ```csv
-section,question,option1,option2,option3,option4,option5
-"Section Name","Question text","Not implemented","Initial steps taken","Partially implemented","Mostly implemented","Fully implemented"
+section,question_number,question,option1,option2,option3,option4,option5
+"Section Name",1,"Question text","Not implemented","Initial steps taken","Partially implemented","Mostly implemented","Fully implemented"
 ```
 
 #### Option B: Supabase Table
@@ -69,10 +69,10 @@ section,question,option1,option2,option3,option4,option5
 Create and populate the questions table:
 
 ```sql
-CREATE TABLE maturity_questions (
+CREATE TABLE IF NOT EXISTS questions_set (
     id SERIAL PRIMARY KEY,
-    context_id TEXT NOT NULL,
     section TEXT NOT NULL,
+    question_number INTEGER NOT NULL,
     question TEXT NOT NULL,
     option1 TEXT NOT NULL,
     option2 TEXT NOT NULL,
@@ -82,10 +82,10 @@ CREATE TABLE maturity_questions (
 );
 
 -- Example insertion
-INSERT INTO maturity_questions 
-(context_id, section, question, option1, option2, option3, option4, option5)
+INSERT INTO questions_set
+(section, question_number, question, option1, option2, option3, option4, option5)
 VALUES 
-('default', 'Section Name', 'Question text', 
+('Section Name', 1, 'Question text', 
  'Not implemented', 'Initial steps taken', 'Partially implemented', 
  'Mostly implemented', 'Fully implemented');
 ```
